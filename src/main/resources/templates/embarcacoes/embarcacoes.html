@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div th:insert="header :: topo"></div>
+<body>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <td>Id</td>
+        <td>Nome</td>
+        <td>Tipo</td>
+        <td>VALOR EMBARCACAO</td>
+        <td>Nome locador</td>
+
+    </tr>
+    </thead>
+    <tr th:each="embarcacao: ${embarcacoes}">
+        <td><span th:text="${embarcacao.id}"></span></td>
+        <td><span th:text="${embarcacao.nome}"></span></td>
+        <td><span th:text="${embarcacao.tipo}"></span></td>
+        <td><span th:text="${embarcacao.valor_locacao}"></span></td>
+        <td><span th:text="${embarcacao.locador.nome}"></span></td>
+
+
+
+        <td><a
+                th:href="@{embarcacoes/editar/{codigo} (codigo=${embarcacao.id})}">Editar</a></td>
+        <td><a
+                th:href="@{embarcacoes/excluir/{codigo} (codigo=${embarcacao.id})}">Excluir</a></td>
+    </tr>
+</table>
+</body>
+<div th:insert="footer :: rodape"></div>
+</html>

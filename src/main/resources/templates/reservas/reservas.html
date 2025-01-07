@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div th:insert="header :: topo"></div>
+<body>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <td>Id</td>
+        <td>DataINICO</td>
+        <td>DataFim</td>
+        <td>Locatario</td>
+        <td>Embarcacao</td>
+        <td>valor</td>
+
+        <td colspan="2">Acoes</td>
+    </tr>
+    </thead>
+    <tr th:each="reserva: ${reservas}">
+        <td><span th:text="${reserva.id}"></span></td>
+        <td><span th:text="${reserva.dataInicio}"></span></td>
+        <td><span th:text="${reserva.dataFim}"></span></td>
+        <td><span th:text="${reserva.locatario.nome}"></span></td>
+        <td><span th:text="${reserva.embarcacao.nome}"></span></td>
+        <td><span th:text="${reserva.embarcacao.valor_locacao}"></span></td>
+
+
+
+        <td><a
+                th:href="@{reservas/editar/{codigo} (codigo=${reserva.id})}">Editar</a></td>
+        <td><a
+                th:href="@{reservas/excluir/{codigo} (codigo=${reserva.id})}">Excluir</a></td>
+    </tr>
+</table>
+</body>
+<div th:insert="footer :: rodape"></div>
+</html>

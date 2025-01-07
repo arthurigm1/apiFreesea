@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuário</title>
+</head>
+<div th:insert="header :: topo"></div>
+<body>
+<div class="ml-5">
+    <form action="#" th:action="@{/embarcacoes/salvar}" th:object="${embarcacao}" method="post">
+        <div class="form-group">
+            <input type="hidden" th:field="*{id}" /><br />
+            <label>Nome:</label>
+            <input type="text" class="form-control" th:field="*{nome}" /><br />
+            <label>Tipo:</label>
+            <input type="text" class="form-control" th:field="*{tipo}" /><br />
+            <label>Valor:</label>
+            <input type="text" class="form-control" th:field="*{valor_locacao}" /><br />
+
+            <div class="form-group">
+                <label for="locador">Locador:</label>
+                <select id="locador" class="form-control" th:field="*{locador.id}">
+                    <option th:each="locador : ${locadores}" th:value="${locador.id}" th:text="${locador.nome}"></option>
+                </select>
+            </div>
+
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+</div>
+</body>
+<div th:insert="footer :: rodape"></div>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuário</title>
+</head>
+<div th:insert="header :: topo"></div>
+<body>
+<div class="ml-5">
+    <form action="#" th:action="@{/usuarios/salvar}" th:object="${usuario}" method="post">
+        <div class="form-group">
+            <input type="hidden" th:field="*{id}" /><br />
+            <label>Nome:</label>
+            <input type="text" class="form-control" th:field="*{nome}" /><br />
+            <label>CPF:</label>
+            <input type="text" class="form-control" th:field="*{cpf}" /><br />
+            <label>Email:</label>
+            <input type="text" class="form-control" th:field="*{email}" /><br />
+            <label>Senha:</label>
+            <input type="password" class="form-control" th:field="*{senha}" /><br />
+            <label>Telefone:</label>
+            <input type="text" class="form-control" th:field="*{telefone}" /><br />
+            <label>Tipo de Usuário:</label>
+            <select class="form-control" th:field="*{userType}">
+                <option value="LOCADOR">Locador</option>
+                <option value="LOCATARIO">Locatario</option>
+            </select><br />
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+</div>
+</body>
+<div th:insert="footer :: rodape"></div>
+</html>

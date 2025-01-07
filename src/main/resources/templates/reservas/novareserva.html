@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Reserva</title>
+</head>
+<div th:insert="header :: topo"></div>
+<body>
+<div class="ml-5">
+    <form action="#" th:action="@{/reservas/salvar}" th:object="${reserva}" method="post">
+        <div class="form-group">
+            <input type="hidden" th:field="*{id}" /><br />
+            <label>DataInicio:</label>
+            <input type="date" class="form-control" th:field="*{dataInicio}" /><br />
+            <label>DataFim:</label>
+            <input type="date" class="form-control" th:field="*{dataFim}" /><br />
+
+
+            <div class="form-group">
+                <label for="embarcacao">Embarcação:</label>
+                <select id="embarcacao" class="form-control" th:field="*{embarcacao.id}">
+                    <option th:each="embarcacao : ${embarcacoes}" th:value="${embarcacao.id}" th:text="${embarcacao.nome}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="locatario">Locatário:</label>
+                <select id="locatario" class="form-control" th:field="*{locatario.id}">
+                    <option th:each="locatario : ${locatarios}" th:value="${locatario.id}" th:text="${locatario.nome}"></option>
+                </select>
+            </div>
+
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+</div>
+</body>
+<div th:insert="footer :: rodape"></div>
+</html>
